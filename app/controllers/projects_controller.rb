@@ -1,9 +1,18 @@
 class ProjectsController < ApplicationController
+  def data
+    respond_to do |format|
+      format.json {
+        render :json => [1,2,3,4,5]
+      }
+    end
+  end
+
   def index
   end
 
   def show
     @project = Project.find(params[:id])
+  end
   end
 
   def new
@@ -26,4 +35,5 @@ class ProjectsController < ApplicationController
       p request["ip"]
     end
   end
-end
+
+# end

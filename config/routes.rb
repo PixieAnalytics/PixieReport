@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   resources :users do
-    resources :projects
+    resources :projects do
+      get 'data', defaults: { format: 'json' }
+    end
     collection do
       post 'signin'
       get 'signout'
@@ -21,7 +23,8 @@ Rails.application.routes.draw do
   get '/signout' => 'users#signout'
   get '/signup' => 'users#new'
   post 'visitors/manage'
-
+  get 'projects/index'
+  # get 'projects/data', :defaults => { :format => 'json' }
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
