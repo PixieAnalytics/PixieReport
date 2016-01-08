@@ -1,0 +1,8 @@
+<div id="signin">
+<%= form_for 'signin', url: signin_path do |f| %>
+  <%= f.text_field :domain, value: "domain" %>
+  <%= f.password_field :password, value: "password" %>
+  <%= f.submit "Sign In" %>
+<% end %>
+
+</div>
