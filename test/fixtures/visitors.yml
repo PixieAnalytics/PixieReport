@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ip: MyString
+  arrival: 2016-01-08 08:58:39
+  departure: 2016-01-08 08:58:39
+  clicks: MyString
+  country: MyString
+  city: MyString
+
+two:
+  ip: MyString
+  arrival: 2016-01-08 08:58:39
+  departure: 2016-01-08 08:58:39
+  clicks: MyString
+  country: MyString
+  city: MyString
