@@ -1,16 +1,25 @@
 class UsersController < ApplicationController
-  include ActiveModel::SecurePassword
-  has_secure_password
- def new
+  # include ActiveModel::SecurePassword
+  # has_secure_password
+  # attr_accessible :email, :password, :password_confirmation
+  before_action :set_user
+
+  def new
   end
 
   def create
   end
 
   def signin
-    user = User.where(:domain == params[:domain])[0]
-    p user
-    redirect_to "/"
+    p permitted_users_params[:email]
+    user = User.find_by_email(permitted_users_params[:email])
+    if user && user.authenticate(permitted_users_params[:password])
+      session[:user_id] = user.id
+      redirect_to user, :notice => "Welcome back, #{user.email}"
+    else
+      flash.now.alert = "Invalid email or password"
+      render "new"
+    end
   end
 
   def signout
@@ -19,6 +28,6 @@ class UsersController < ApplicationController
   private
 
   def permitted_users_params
-    params.require(:domain, :password, :email, :name)
+    params.require(:user)
   end
 end
