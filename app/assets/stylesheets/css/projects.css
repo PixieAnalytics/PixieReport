@@ -1,6 +1,7 @@
 body {
-  background-color: light-green;
+  background-color: #b2deed
 }
+
 
 td {
   vertical-align: top;
@@ -12,4 +13,44 @@ td {
 
 h1, h2, h3, h4 {
   text-align: center;
+}
+
+.project-list {
+  text-align: center;
+  margin: 0px auto;
+  width: 50%;
+}
+
+.project-list td {
+  height: 10em;
+  vertical-align: middle;
+}
+
+table {
+  background-color: #def3fa;
+  -webkit-box-shadow: -2px 13px 53px 2px rgba(0,0,0,0.75);
+  -moz-box-shadow: -2px 13px 53px 2px rgba(0,0,0,0.75);
+  box-shadow: -2px 13px 53px 2px rgba(0,0,0,0.75);
+  border-radius: 15px;
+  padding: 1em;
+}
+
+td {
+  border-radius: 15px;
+  background-color: #def3ff;
+}
+
+.container {
+  margin: 0px auto;
+  max-width: 600px;
+  margin-top: 3em
+}
+
+#xmp {
+  overflow: scroll;
+  width: 500px;
+  background-color: white;
+  border: 3px solid grey;
+  border-radius: 5px;
+  margin: 0px auto;
 }

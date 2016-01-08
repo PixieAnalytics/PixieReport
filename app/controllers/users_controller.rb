@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   # has_secure_password
   # attr_accessible :email, :password, :password_confirmation
   before_action :set_user
-
+  def index
+  end
   def new
   end
 
