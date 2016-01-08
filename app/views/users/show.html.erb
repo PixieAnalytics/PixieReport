@@ -1,1 +1,16 @@
-show.html.erb
+<div class="c" id="user-homepage">
+  <h1>Welcome <%= @user.name %></h1>
+
+  <table class="project-list" border="1px">
+    <thead>Your Projects</thead>
+    <% @user.projects.each do |project| %>
+      <tr>
+        <td>
+          <%= link_to project.domain, user_project_path(@user, project)%>
+          <br>
+          <%= project.description %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
