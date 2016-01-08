@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'visitors/manage'
+
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -7,16 +9,18 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   resources :users do
+    resources :projects
     collection do
       post 'signin'
       get 'signout'
     end
   end
 
+
   post '/signin' => 'users#signin'
   get '/signout' => 'users#signout'
   get '/signup' => 'users#new'
-
+  post 'visitors/manage'
 
 
   # Example of regular route:
