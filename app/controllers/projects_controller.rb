@@ -43,8 +43,10 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @average_stay=0
+    @num_clicks =0
     @project.visitors.each do |visitor|
       @average_stay += ((visitor.departure - visitor.arrival)/(60 * @project.visitors.all.length)).floor
+      @num_clicks += (visitor.clicks.to_f/@project.visitors.all.length).floor
     end
   end
   end
