@@ -3,12 +3,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    #       p "****************************"
-    # p params
-    #   p "***************************"
-    # if request.xhr?
-    #   p request["ip"]
-    # end
+    @project = Project.find(params[:id])
   end
 
   def new

@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20160108165839) do
   enable_extension "plpgsql"
 
   create_table "projects", force: :cascade do |t|
+    t.string   "title"
     t.string   "domain"
     t.string   "description"
     t.integer  "user_id"
@@ -41,9 +42,10 @@ ActiveRecord::Schema.define(version: 20160108165839) do
     t.string   "clicks"
     t.string   "country"
     t.string   "city"
+    t.string   "destination"
     t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "visitors", ["project_id"], name: "index_visitors_on_project_id", using: :btree

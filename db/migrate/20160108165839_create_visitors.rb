@@ -7,6 +7,7 @@ class CreateVisitors < ActiveRecord::Migration
       t.string :clicks
       t.string :country
       t.string :city
+      t.string :destination
       t.references :project, index: true, foreign_key: true
 
       t.timestamps null: false

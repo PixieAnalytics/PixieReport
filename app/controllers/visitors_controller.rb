@@ -1,10 +1,11 @@
 class VisitorsController < ApplicationController
   def manage
+    # p params
     project =  Project.where(domain: params[:domain])[0]
-    project.visitors.create(ip: params[:ip], arrival: params[:arrival], departure: params[:leave], clicks: params[:clicks], city: params[:city], country: params[:country])
-    p "********************"
-    p project.visitors
-    p "**********************"
+    project.visitors.create(destination: params[:destination], ip: params[:ip], arrival: params[:arrival], departure: params[:leave], clicks: params[:clicks], city: params[:city], country: params[:country])
+    # p "********************"
+    # p project.visitors
+    # p "**********************"
   end
 
   private

@@ -1,1 +1,36 @@
-show.html.erb
+<div id="project_show">
+  <div id="total-visitors">
+    <p><strong>Total Visitors: </strong></p>
+    <%= @project.visitors.count %>
+  </div>
+  <div id="unique-vistors">
+    <p><strong>Unique Visitors: </strong></p>
+    <%= @project.visitors.select(:ip).distinct.length %>
+  </div>
+  <div id="geolocation">
+    <p><strong>Cities: </strong></p>
+    <% @project.visitors.select(:city).distinct.each do |visitor| %>
+      <%= visitor.city %>: <%= @project.visitors.where(city: visitor.city).length %>
+    <% end %>
+  </div>
+  <div id="popular-links">
+    <p><strong>Popular Links: </strong></p>
+    <ul>
+    <% @project.visitors.select(:destination).distinct.each do |visitor| %>
+    <li>
+      <%= visitor.destination %>: <%= @project.visitors.where(destination: visitor.destination).length %></li>
+    <% end %>
+  </ul>
+
+  </div>
+  <div id="duration_stay">
+    <p><strong>Duration of Stay: </strong></p>
+    <ul>
+    <% @project.visitors.each do |visitor| %>
+      <li><%= visitor.departure - visitor.arrival %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
