@@ -1,1 +1,38 @@
-show.html.erb
+<div id="project_show">
+  <h1><%= @project.title %></h1>
+  <table>
+    <tr><td>
+  <div id="total-visitors">
+    <p><strong>Total Visitors: </strong></p>
+    <%= @project.visitors.count %>
+  </div></td><td>
+  <div id="unique-vistors">
+    <p><strong>Unique Visitors: </strong></p>
+    <%= @project.visitors.select(:ip).distinct.length %>
+  </div></td><td>
+  <div id="num-clicks">
+    <p><strong>On average people interact with your page <%= @num_clicks %> times </strong></p>
+  </div></tr>
+    <tr><td>
+  <div id="geolocation">
+    <p><strong>Cities: </strong></p>
+    <svg id="cities_chart" width="400", height="400"></svg>
+    <ul>
+    <% @project.visitors.select(:city).distinct.each do |visitor| %>
+      <li><%= visitor.city %>: <%= @project.visitors.where(city: visitor.city).length %></li>
+    <% end %></ul>
+  </div></td><td>
+  <div id="popular-links">
+    <p><strong>Where people go from here: </strong></p>
+    <svg id="links_chart" width="400", height="400"></svg>
+
+  </div></td><td>
+  <div id="duration_stay">
+    <p><strong>Length of stay: </strong></p>
+    <p>Average Visit: <%= @average_stay %> minutes
+    <p><i>Number of visitors and how long they stayed in minutes</i></p>
+    <svg id="duration_chart" width="500", height="400"></svg>
+  </div></td></table>
+
+  <!-- <svg id="graph"></svg> -->
+</div>
