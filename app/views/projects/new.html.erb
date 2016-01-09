@@ -1,0 +1,21 @@
+<div class="container">
+<div id="new-project">
+  <table class="new">
+  <%= form_for :project, url: user_projects_path(user_id: @user.id) do |f| %>
+  <tr><td>
+    <%= f.label "Title" %></td><td>
+    <%= f.text_field :title %></td>
+    </tr><tr>
+    <td><%= f.label "Domain" %></td>
+    <td><%= f.text_field :domain %></td>
+    </tr><tr>
+    <td><%= f.label "Description" %></td>
+    <td><%= f.text_field :description %></td>
+    </tr><tr>
+    <td><%= f.submit "Get Report" %></td>
+    </tr>
+  <% end %>
+  </form>
+</table>
+</div>
+</div>

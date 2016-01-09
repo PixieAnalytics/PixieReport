@@ -49,12 +49,17 @@ class ProjectsController < ApplicationController
       @num_clicks += (visitor.clicks.to_f/@project.visitors.all.length).floor
     end
   end
-  end
+
 
   def new
+    @project = Project.new
   end
 
   def create
+    p params_require
+    p "**************"
+    @user.projects.create(title: params_require[:title], domain: params_require[:domain], description: params_require[:description])
+    redirect_to @user
   end
 
   def edit
@@ -65,5 +70,11 @@ class ProjectsController < ApplicationController
 
   def update
   end
+  private
 
-# end
+  def params_require
+    params.require(:project)
+
+  end
+
+end
