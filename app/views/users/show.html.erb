@@ -4,7 +4,6 @@
   <h1>Welcome <%= @user.name %></h1>
 
   <table class="project-list" border="1px">
-    <thead>Your Projects</thead>
     <% @user.projects.each do |project| %>
       <tr>
         <td>
@@ -20,7 +19,7 @@
     <% end %>
     <tr>
       <td>Get your PixieReport from another project
-        <br><%= link_to "Start Here", new_user_project_path(user_id: @user.id) %>
+        <br><%= link_to "Start Here", new_user_project_path(user_id: session[:user_id]) %>
       </td>
     </tr>
   </table>

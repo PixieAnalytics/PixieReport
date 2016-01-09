@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 
   post '/signin' => 'users#signin'
-  get '/signout' => 'users#signout'
+  post 'users/signout' => 'users#signout'
   get '/signup' => 'users#new'
   post 'visitors/manage'
   get 'projects/index'

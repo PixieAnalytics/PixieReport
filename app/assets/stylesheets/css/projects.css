@@ -18,7 +18,7 @@ h1, h2, h3, h4 {
 .project-list {
   text-align: center;
   margin: 0px auto;
-  width: 50%;
+  min-width: 70%;
 }
 
 .project-list td {
@@ -33,6 +33,7 @@ table {
   box-shadow: -2px 13px 53px 2px rgba(0,0,0,0.75);
   border-radius: 15px;
   padding: 1em;
+  margin: 0px auto;
 }
 
 td {
