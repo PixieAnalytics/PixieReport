@@ -1,9 +1,30 @@
 Rails.application.routes.draw do
+  get 'visitors/manage'
+
+  get 'welcome/index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
+  resources :users do
+    resources :projects do
+      get 'data', defaults: { format: 'json' }
+    end
+    collection do
+      post 'signin'
+      get 'signout'
+    end
+  end
+
+
+  post '/signin' => 'users#signin'
+  post 'users/signout' => 'users#signout'
+  get '/signup' => 'users#new'
+  post 'visitors/manage'
+  get 'projects/index'
+  # get 'projects/data', :defaults => { :format => 'json' }
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

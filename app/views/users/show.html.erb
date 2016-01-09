@@ -1,0 +1,27 @@
+<div class="container">
+
+<div id="user-homepage">
+  <h1>Welcome <%= @user.name %></h1>
+
+  <table class="project-list" border="1px">
+    <% @user.projects.each do |project| %>
+      <tr>
+        <td>
+          <%= link_to project.title, user_project_path(@user, project)%>
+          <br>
+          <%= project.domain %>
+          <br>
+          <%= project.description %>
+          <br>
+          Views this week: <%= project.visitors.where("created_at > :week", {week: 1.week.ago}).length %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>Get your PixieReport from another project
+        <br><%= link_to "Start Here", new_user_project_path(user_id: session[:user_id]) %>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>

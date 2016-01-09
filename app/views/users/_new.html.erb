@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Sign up!</h2>
+  <table class="new">
+  <%= form_for :user, url: users_path do |f| %>
+  <tr><td>
+    <%= f.label "Name" %></td><td>
+    <%= f.text_field :name %></td>
+    </tr><tr>
+    <td><%= f.label "Email" %></td>
+    <td><%= f.text_field :email %></td>
+    </tr><tr>
+    <td><%= f.label "Password" %></td>
+    <td><%= f.password_field :password %></td>
+    </tr><tr>
+    <td><%= f.submit "Sign Up" %></td>
+    </tr>
+  <% end %>
+  </form>
+</table>
+
+</div>
