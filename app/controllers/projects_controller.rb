@@ -1,37 +1,14 @@
 class ProjectsController < ApplicationController
+  include ProjectsHelper
   def data
     project = Project.find(params[:project_id])
-    durations = []
-    cities = {}
-    links = {}
-    project.visitors.each do |visitor|
-      durations << (visitor.departure - visitor.arrival)/60
-      if cities[visitor.city]
-        cities[visitor.city] += 1
-      else
-        cities[visitor.city] = 1
-      end
-      if links[visitor.destination]
-        links[visitor.destination] += 1
-      else
-        links[visitor.destination] = 1
-      end
-    end
-    cities_array = []
-    links_array = []
-    cities.each do |city, value|
-      cities_array << {label: city, value: value}
-    end
-    links.each do |link, value|
-      link = "External Link" if link == nil
-      link = link.gsub("http://", "")
-      link =link.gsub(/(.com)\*/, ".com")
-      links_array << {label: link, value: value}
-    end
+    durations = visitor_durations(project)
+    cities = visitor_cities(project)
+    links = visitor_destinations(project)
 
     respond_to do |format|
       format.json {
-        render :json => {duration: durations, cities: cities_array, links: links_array}
+        render :json => {duration: durations, cities: cities, links: links}
       }
     end
   end
