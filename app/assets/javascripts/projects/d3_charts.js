@@ -14,7 +14,6 @@ $.ajax({
            }
        });
 function draw_duration(values) {
-    // console.log(data)
     var values = values;
 
 // A formatter for counts.

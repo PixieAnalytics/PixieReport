@@ -23,11 +23,10 @@ class ProjectsController < ApplicationController
       cities_array << {label: city, value: value}
     end
     links.each do |link, value|
-      copy = link
-      copy = "External Link" if link == nil
-      copy = copy.gsub("http://", "")
-      copy =copy.gsub(/(.com)\*/, ".com")
-      links_array << {label: copy, value: value}
+      link = "External Link" if link == nil
+      link = link.gsub("http://", "")
+      link =link.gsub(/(.com)\*/, ".com")
+      links_array << {label: link, value: value}
     end
 
     respond_to do |format|
@@ -56,8 +55,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    p params_require
-    p "**************"
     @user.projects.create(title: params_require[:title], domain: params_require[:domain], description: params_require[:description])
     redirect_to @user
   end

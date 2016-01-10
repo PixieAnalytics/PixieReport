@@ -13,7 +13,7 @@
           <br>
           <%= project.description %>
           <br>
-          Views this week: <%= project.visitors.where("created_at > :week", {week: 1.week.ago}).length %>
+          Views this week: <%= views_this_week(project) %>
         </td>
       </tr>
     <% end %>
