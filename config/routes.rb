@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post 'visitors/manage'
   get 'projects/index'
+
+  match '*path' => redirect('/'), via: :get
   # get 'projects/data', :defaults => { :format => 'json' }
 
   # Example of regular route:
