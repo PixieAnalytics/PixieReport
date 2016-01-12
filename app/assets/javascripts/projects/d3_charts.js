@@ -1,4 +1,6 @@
-$.ajax({
+var getData = function(){
+  // console.log("hit")
+  $.ajax({
            type: "GET",
            contentType: "application/json; charset=utf-8",
            url: window.location + '/data',
@@ -13,6 +15,7 @@ $.ajax({
                // error();
            }
        });
+}
 function draw_duration(values) {
     var values = values;
 
@@ -20,7 +23,7 @@ function draw_duration(values) {
 var formatCount = d3.format(",.0f");
 
 var margin = {top: 10, right: 30, bottom: 30, left: 30},
-    width = 500 - margin.left - margin.right,
+    width = 400-margin.right,
     height = 300 - margin.top - margin.bottom;
 
 var x = d3.scale.linear()
@@ -88,7 +91,7 @@ function draw_cities(data){
   arcs.append("svg:path").attr("fill", function(d,i){
     return color(i)
   }).attr("d", function(d){
-    console.log(arc(d))
+    // console.log(arc(d))
     return arc(d)
   })
 
@@ -96,7 +99,7 @@ function draw_cities(data){
     d.innerRadius = 30;
     d.outerRadius = r
     return "translate(" + arc.centroid(d) + ")"
-  }).attr("text-anchor", "outer").text(function(d,i){
+  }).attr("text-anchor", "middle").text(function(d,i){
     return data[i].label
   })
 }
@@ -114,7 +117,7 @@ function draw_links(data){
   arcs.append("svg:path").attr("fill", function(d,i){
     return color(i)
   }).attr("d", function(d){
-    console.log(arc(d))
+    // console.log(arc(d))
     return arc(d)
   })
 
