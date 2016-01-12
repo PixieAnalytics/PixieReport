@@ -3,36 +3,35 @@
   <table>
     <tr><td>
   <div id="total-visitors">
-    <p><strong>Total Visitors: </strong></p>
+    <p class="b">Total Visitors: </p>
     <%= @project.visitors.count %>
   </div></td><td>
   <div id="unique-vistors">
-    <p><strong>Unique Visitors: </strong></p>
-    <%= @project.visitors.select(:ip).distinct.length %>
+    <p class="b">Unique Visitors: </p>
+    <%= unique_by_factor(:ip).length %>
   </div></td><td>
   <div id="num-clicks">
-    <p><strong>On average people interact with your page <%= @num_clicks %> times </strong></p>
+    <p class="b">On average people interact with your page <%= @num_clicks %> times </p>
   </div></tr>
     <tr><td>
   <div id="geolocation">
-    <p><strong>Cities: </strong></p>
-    <svg id="cities_chart" width="400", height="400"></svg>
+    <p class="b">Cities: </p>
+    <svg id="cities_chart"></svg>
     <ul>
-    <% @project.visitors.select(:city).distinct.each do |visitor| %>
-      <li><%= visitor.city %>: <%= @project.visitors.where(city: visitor.city).length %></li>
+    <% unique_by_factor(:city).each do |visitor| %>
+      <li><%= visitor.city %>: <%= visitors_where(:city, visitor.city).length %></li>
     <% end %></ul>
   </div></td><td>
   <div id="popular-links">
-    <p><strong>Where people go from here: </strong></p>
-    <svg id="links_chart" width="400", height="400"></svg>
+    <p class="b">Where people go from here: </p>
+    <svg id="links_chart"></svg>
 
   </div></td><td>
   <div id="duration_stay">
-    <p><strong>Length of stay: </strong></p>
+    <p class="b">Length of stay: </p>
     <p>Average Visit: <%= @average_stay %> minutes
     <p><i>Number of visitors and how long they stayed in minutes</i></p>
-    <svg id="duration_chart" width="500", height="400"></svg>
+    <svg id="duration_chart"></svg>
   </div></td></table>
 
-  <!-- <svg id="graph"></svg> -->
 </div>
