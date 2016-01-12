@@ -9,3 +9,11 @@
   font-size: 3em;
   border-bottom: 3px solid black;
 }
+
+#PixieReport a {
+  text-decoration: none;
+  color: black;
+}
+body {
+  margin-bottom: 2em;
+}

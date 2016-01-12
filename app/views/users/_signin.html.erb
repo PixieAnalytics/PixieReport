@@ -6,6 +6,8 @@
       <%= f.submit "Sign In" %>
     <% end %>
   <% else %>
+    <%= button_to "Go to your page", user_path(@user), method: "get" %>
     <%= button_to "Sign Out", controller: "users", action: "signout" %>
+
   <% end %>
 </div>
