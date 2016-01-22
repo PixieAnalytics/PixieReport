@@ -9,7 +9,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<span id="signin"><%= render partial: 'users/signin' %></span>
+<span id="signin"><%= render partial: 'users/signin' %>
+<% if flash[:error] %>
+  <%= flash[:error] %>
+<% end %>
+</span>
 <span id="PixieReport"><%= link_to "Pixie Report", "/" %></span>
 <%= yield %>
 
