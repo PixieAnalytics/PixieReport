@@ -3,12 +3,15 @@ class UsersController < ApplicationController
   # has_secure_password
   # attr_accessible :email, :password, :password_confirmation
   before_action :set_user
-  def index
-  end
-  def new
-  end
+  # def index
+  # end
+  # def new
+  # end
 
   def show
+    if @user.id != session[:user_id]
+      redirect_to '/', flash: {error: "You do not have access to this page"}
+    end
   end
 
   def create
@@ -23,8 +26,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to user, :notice => "Welcome back, #{user.email}"
     else
-      flash.now.alert = "Invalid email or password"
-      render "new"
+      # flash.now.alert = "Invalid email or password"
+      redirect_to '/', flash: { :error => "Invalid email or password" }
     end
   end
 
